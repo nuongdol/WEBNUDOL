@@ -15,16 +15,18 @@ let getHomepage = (req, res) => {
                     firstName: row.firstName,
                     lastName: row.lastName
                 })
+
             });
-            return res.render('test/index.ejs', { dataUser: JSON.stringify(data) })
+
+            return res.render('index.ejs', { dataUser: data })
         })
 
 }
 
-module.exports = {
+// module.exports = {
 
 
-}
+// }
 
 // let getHomepageabout = (req, res) => {
 //     //logic
