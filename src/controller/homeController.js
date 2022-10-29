@@ -34,13 +34,30 @@ let getHomepage = async (req, res) => {
 
 
 let getDetailPage = async (req, res) => {
-    let userId  = req.params.id;
+    let userId = req.params.id;
     let [user] = await pool.execute(`select * from users where id = ?`, [userId]);
     return res.send(JSON.stringify(user))
 }
 
+// let createNewUser = (req, res) => {
+//     const newLocal = 'call post create new user';
+//     return res.send(newLocal)
+// }
+
+let createNewUser = async (req, res) => {
+    //let {firstName,lastName,email,address}=req.body;
+    let firstName=req.body.firstName;
+    let lastName=req.body.lastName;
+    let email=req.body.email;
+    let address=req.body.address;
+
+    await pool.execute('insert into users(firstName,lastName,email,address)values(?,?,?,?)',[firstName,lastName,email,address]);
+    return res.redirect( '/');
+   
+}
 module.exports = {
     getHomepage,
-    getDetailPage
+    getDetailPage,
+    createNewUser
     // getHomepageabout
 }
