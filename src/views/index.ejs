@@ -47,8 +47,16 @@
                         </td>
                         <td>
                             <a href="/detail/user/<%= dataUser[i].id %>" target="_blank">Detail</a>
-                            <button type="button">Edit</button>
-                            <button type="button">Delete</button>
+                            <form action="/edit-user/<%= dataUser[i].id %>" method="GET">
+                                <button type="submit">Edit</button>
+                            </form>
+
+
+                            <form action="/delete-user" method="POST">
+                                <input type="text" hidden value="<%= dataUser[i].id %>" name="userId" />
+                                <button type="submit">Delete</button>
+                            </form>
+
                         </td>
                     </tr>
                     <% } %>
@@ -62,7 +70,7 @@
             <div><b>Create a new user:</b> </div>
             <div>
                 <label><b>First Name:</b></label>
-                <input type="text" name ="firstName"/>
+                <input type="text" name="firstName" />
             </div>
             <div>
                 <label><b>Last Name:</b></label>
@@ -70,11 +78,11 @@
             </div>
             <div>
                 <label><b>Email:</b></label>
-                <input type="email" name="email"/>
+                <input type="email" name="email" />
             </div>
             <div>
                 <label><b>Address:</b></label>
-                <input type="text" name="address"/>
+                <input type="text" name="address" />
             </div>
             <div>
                 <button type="submit" class="btn-submit">submit</button>
